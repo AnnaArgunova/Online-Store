@@ -1,19 +1,10 @@
-import React, {useState} from "react";
-import { CardBag } from "../Bag/CardBag";
-import catalog from "../../catalog";
+import {connect} from 'react-redux';
+import {Bag} from './bag';
 
-export const Bag = () => {
+const mapStateToProps = (state) => {
+ return {
+  item:state.products.selectedProduct
+ }
+}
 
-  return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>Корзина</h1>
-  
-      {catalog ? (
-        catalog.map((item) => <CardBag item={item}  key = {item.id}/>)
-      ) : (
-        <div>Корзина пуста</div>
-      )}
-
-    </div>
-  );
-};
+export const ProductBag= connect(mapStateToProps)(Bag)
