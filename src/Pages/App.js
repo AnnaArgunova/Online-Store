@@ -1,7 +1,7 @@
-import React from 'react';
-import { ProductList } from './ProductList/index';
+import React, {useState} from 'react';
+import {ProductList } from './ProductList';
 import {ProductDetail} from './ProductDetalis';
-import {Bag} from './Bag';
+import {ProductBag} from './Bag';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,13 +11,20 @@ import {
 
 
 function App() {
+  const [selectedProduct, selectProduct] = useState(null)
   return (
     
     <Router>
       <Switch>
-        <Route path='/' component = {ProductList} exact/>
-        <Route path = '/details' component = {ProductDetail}/>
-        <Route path = '/bag' component = {Bag}/>
+        <Route path='/' exact>
+          <ProductList selectProduct = {selectProduct}/>
+        </Route>
+        <Route path = '/details'>
+          <ProductDetail/>
+        </Route>
+        <Route path = '/bag'>
+          <ProductBag selectedProduct={selectedProduct}/>
+        </Route>
       </Switch>
     </Router>
   );

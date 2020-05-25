@@ -7,10 +7,11 @@ const { Meta } = CardComponent;
 
 
 export const Card = (props) => {
-  const {item, bags} = props
+  const {item, bags, selectProduct} = props
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
+    selectProduct(item);
   };
 
 const [isAdd, changeAddToBag] = useState('В корзину');
