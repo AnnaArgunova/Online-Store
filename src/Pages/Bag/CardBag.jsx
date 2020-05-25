@@ -23,7 +23,6 @@ console.log(catalog, count);
     item.totalCont = count-1;
     catalog.totalSum -= item.price;
 
-    console.log(catalog);
     }
 }
   return (

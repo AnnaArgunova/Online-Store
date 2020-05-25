@@ -7,29 +7,25 @@ const { Meta } = CardComponent;
 
 
 export const Card = (props) => {
-  const {item, bags, selectProduct} = props
+  const {item, addProduct} = props
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
-    selectProduct(item);
+ 
+    
   };
 
 const [isAdd, changeAddToBag] = useState('В корзину');
   const addToBag = () => {
     if(isAdd === 'В корзину'){
-      bags.push(item);
+
+            addProduct(item);
 
     changeAddToBag('Удалить из корзины')
     } else{
       changeAddToBag('В корзину')
-for(let i = 0; i < bags.length; i++){
-  if(bags[i].id === item.id){
-    bags.splice(i, 1)
-  }
-}
   }
 
-   console.log(bags);
   };
   return (
     <div>

@@ -1,4 +1,4 @@
-import { SELECT_PRODUCT } from '../Action/products'
+import {ADD_PRODUCT} from '../Action/addProducts';
 
 const initialState = {
     catalog: [
@@ -41,18 +41,21 @@ const initialState = {
             image: 'images/srimpGreenBabaulti-300x400.jpg'
         }
     ],
-    selectedProduct: null
+    addedProduct:null,
+bag:[]
 }
 
 export const products = (state = initialState, action) => {
     switch (action.type) {
-        case SELECT_PRODUCT: {
-            return {
-                ...state,
-                selectedProduct: action.product
-            }
-        }; 
-    
+     
+case ADD_PRODUCT:{
+    return{
+        ...state,
+        addedProduct: action.product,
+        bag: [...state.bag, action.product]
+       
+    }
+} 
         default: 
             return state
             

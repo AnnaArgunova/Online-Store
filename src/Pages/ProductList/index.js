@@ -1,10 +1,9 @@
 import {connect} from 'react-redux';
 import {ProductListComponent} from './poductList';
-import {selectProductAction} from 'Redux/Action/products'
+import {addProductAction} from 'Redux/Action/addProducts';
 
 const actions = {
-  selectProductAction
-
+addProductAction
 }
 
 export const ProductList= connect(null, actions)(ProductListComponent)

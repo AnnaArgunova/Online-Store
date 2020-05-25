@@ -11,19 +11,24 @@ import {
 
 
 function App() {
-  const [selectedProduct, selectProduct] = useState(null)
+   const [addedProduct, addProduct] = useState(null)
+
   return (
     
     <Router>
       <Switch>
         <Route path='/' exact>
-          <ProductList selectProduct = {selectProduct}/>
+          <ProductList
+           addProduct ={addProduct} 
+          />
         </Route>
         <Route path = '/details'>
           <ProductDetail/>
         </Route>
         <Route path = '/bag'>
-          <ProductBag selectedProduct={selectedProduct}/>
+          <ProductBag 
+           addedProduct = {addedProduct}
+          />
         </Route>
       </Switch>
     </Router>
