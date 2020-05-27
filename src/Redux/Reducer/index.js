@@ -1,8 +1,10 @@
-import {combineReducers} from 'redux'
-import {products} from './poducts'
+import { combineReducers } from 'redux'
+import products from './poducts';
+import bag from './Bag';
 
 const appReducer = combineReducers({
-    products
+    products,
+    bag
 })
 
-export {appReducer}
+export { appReducer }

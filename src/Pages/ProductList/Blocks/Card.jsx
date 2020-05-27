@@ -7,7 +7,7 @@ const { Meta } = CardComponent;
 
 
 export const Card = (props) => {
-  const {item, addProduct} = props
+  const {item, addProduct, deleteProduct} = props
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
@@ -24,6 +24,8 @@ const [isAdd, changeAddToBag] = useState('В корзину');
     changeAddToBag('Удалить из корзины')
     } else{
       changeAddToBag('В корзину')
+      deleteProduct(item)
+
   }
 
   };

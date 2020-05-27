@@ -1,10 +1,17 @@
 import {connect} from 'react-redux';
-import {Bag} from './bag';
+import {Bag} from './Bag';
+import {incrementProductAction} from 'Redux/Action/products';
 
 const mapStateToProps = (state) => {
  return {
-  item:state.products.bag
+  item:state.bag.bagsItem,
+  totalSum: state.bag.totalSum
  }
 }
 
-export const ProductBag= connect(mapStateToProps)(Bag)
+
+const actions = {
+    incrementProduct:incrementProductAction
+}
+
+export const ProductBag= connect(mapStateToProps, actions)(Bag)

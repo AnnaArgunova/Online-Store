@@ -6,12 +6,13 @@ import { Menu } from './Blocks/Menu';
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export const ProductListComponent = ({ addProduct, ...rest }) => {
+export const ProductListComponent = ({ addProduct, deleteProduct,  ...rest }) => {
   console.log(rest);
 
   const renderCards = (element) => (
     <Card item={element}
     addProduct={rest.addProductAction} 
+    deleteProduct = {rest.deleteProductAction}
     key={element.id.toString()} />
 
   );

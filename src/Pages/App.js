@@ -12,7 +12,9 @@ import {
 
 function App() {
    const [addedProduct, addProduct] = useState(null)
+   const [deletedProduct, deleteProduct] = useState(null)
 
+   
   return (
     
     <Router>
@@ -20,6 +22,7 @@ function App() {
         <Route path='/' exact>
           <ProductList
            addProduct ={addProduct} 
+           deleteProduct ={deleteProduct}
           />
         </Route>
         <Route path = '/details'>
@@ -28,6 +31,7 @@ function App() {
         <Route path = '/bag'>
           <ProductBag 
            addedProduct = {addedProduct}
+           deletedProduct ={deletedProduct}
           />
         </Route>
       </Switch>
