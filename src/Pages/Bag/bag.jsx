@@ -1,26 +1,35 @@
 import React from "react";
 import { CardBag } from "../Bag/CardBag";
-import {ProductBag} from './index'
-import { incrementProductAction } from "../../Redux/Action/products";
 
-
-export const Bag = ({item, incrementProduct, ...rest}) => {
-  const renderCardBag = (element) =>(
-<CardBag item={element} 
-incrementProduct = {incrementProductAction}
-        key = {element.id}/>
-  
-);
+export const Bag = ({
+  item,
+  totalSum,
+  incrementProduct,
+  decrementProduct,
+  deleteProduct,
+  ...rest
+}) => {
+  const renderCardBag = (element) => (
+    <CardBag
+      item={element}
+      incrementProduct={rest.incrementProductAction}
+      decrementProduct={rest.decrementProductAction}
+      deleteProduct={rest.deleteProductAction}
+      key={element.id}
+    />
+  );
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Корзина</h1>
-  
-      {item ? (
-        item.map((item) => (renderCardBag(item)))
+
+      {item.length ? (
+        item.map((item) => renderCardBag(item))
       ) : (
-        <div>Корзина пуста</div>
+        <h2>Корзина пуста</h2>
       )}
-<div></div>
+      <div>
+        Сумма<span> {totalSum}</span>
+      </div>
     </div>
   );
 };

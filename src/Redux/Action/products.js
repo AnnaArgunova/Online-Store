@@ -10,9 +10,15 @@ export const deleteProductAction = (product) => ({
     product
 })
 
-
 export const INCREMENT_PRODUCT = 'INCREMENT_PRODUCT';
 export const incrementProductAction = (product) => ({
     type: INCREMENT_PRODUCT,
+    product
+})
+
+
+export const DECREMENT_PRODUCT = 'DECREMENT_PRODUCT';
+export const decrementProductAction = (product) => ({
+    type: DECREMENT_PRODUCT,
     product
 })

@@ -5,29 +5,23 @@ import { Link } from "react-router-dom";
 
 const { Meta } = CardComponent;
 
-
 export const Card = (props) => {
-  const {item, addProduct, deleteProduct} = props
+  const { item, addProduct, deleteProduct } = props;
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
- 
-    
   };
 
-const [isAdd, changeAddToBag] = useState('В корзину');
+  const [isAdd, changeAddToBag] = useState("В корзину");
   const addToBag = () => {
-    if(isAdd === 'В корзину'){
+    if (isAdd === "В корзину") {
+      addProduct(item);
 
-            addProduct(item);
-
-    changeAddToBag('Удалить из корзины')
-    } else{
-      changeAddToBag('В корзину')
-      deleteProduct(item)
-
-  }
-
+      changeAddToBag("Удалить из корзины");
+    } else {
+      changeAddToBag("В корзину");
+      deleteProduct(item);
+    }
   };
   return (
     <div>
@@ -68,7 +62,6 @@ const [isAdd, changeAddToBag] = useState('В корзину');
       <Button onClick={addToBag} type="link">
         {isAdd}
       </Button>
-      
     </div>
   );
 };

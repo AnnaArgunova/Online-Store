@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {Bag} from './Bag';
-import {incrementProductAction} from 'Redux/Action/products';
+import {incrementProductAction, decrementProductAction, deleteProductAction } from 'Redux/Action/products';
 
 const mapStateToProps = (state) => {
  return {
@@ -11,7 +11,10 @@ const mapStateToProps = (state) => {
 
 
 const actions = {
-    incrementProduct:incrementProductAction
-}
+    incrementProductAction,
+    decrementProductAction,
+    deleteProductAction
+    }
+
 
 export const ProductBag= connect(mapStateToProps, actions)(Bag)

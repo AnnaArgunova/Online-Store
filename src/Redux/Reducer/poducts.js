@@ -1,5 +1,5 @@
-import {ADD_PRODUCT, DELETE_PRODUCT} from '../Action/products';
-import {createReducer} from 'Helpers/reducer';
+import { ADD_PRODUCT, DELETE_PRODUCT } from '../Action/products';
+import { createReducer } from 'Helpers/reducer';
 const initialState = {
     catalog: [
         {
@@ -7,7 +7,7 @@ const initialState = {
             title: 'Креветка',
             price: 60,
             image: 'images/shrimpYellowNeon-300x400.jpg',
-            count:1
+            count: 0
 
 
         },
@@ -16,7 +16,7 @@ const initialState = {
             title: 'Улитка',
             price: 60,
             image: 'images/snailYellowAmpoule1.jpg',
-            count:1
+            count: 0
 
         },
         {
@@ -24,7 +24,7 @@ const initialState = {
             title: 'Креветка',
             price: 60,
             image: 'images/srimpGreenBabaulti-300x400.jpg',
-            count:1
+            count: 0
 
         },
         {
@@ -32,7 +32,7 @@ const initialState = {
             title: 'Креветка',
             price: 60,
             image: 'images/shrimpYellowNeon-300x400.jpg',
-            count:1
+            count: 0
 
         },
         {
@@ -40,7 +40,7 @@ const initialState = {
             title: 'Улитка',
             price: 60,
             image: 'images/snailYellowAmpoule1.jpg',
-            count:1
+            count: 0
 
         },
         {
@@ -48,35 +48,42 @@ const initialState = {
             title: 'Креветка',
             price: 60,
             image: 'images/srimpGreenBabaulti-300x400.jpg',
-            count:1
+            count: 0
         }
     ],
-    addedProduct:null,
+    addedProduct: null,
 
 }
 
 const products = {
-   [ADD_PRODUCT]: (state = initialState, action) => {
-     
-    return{
-        ...state,
-        //addedProduct: action.product,
-    
-    }
-},
-[DELETE_PRODUCT]: (state = initialState, action) => {
-    return{
-        ...state,
-        catalog: action.catalog.map(el => {
-            if (el.id === action.el.id) {
-                return action.el
-            }
-            return el
-        })
-    }      
-    }
+    [ADD_PRODUCT]: (state = initialState, action) => {
+
+        return {
+            ...state,
+            addedProduct: state.catalog.map(el => {
+                if (el.id === action.product.id) {
+                    return action.product
+                }
+
+            })
+
+        }
+    },
+    [DELETE_PRODUCT]: (state = initialState, action) => {
+
+        return {
+            ...state,
+            addedProduct: state.catalog.map(el => {
+                if (el.id === action.product.id) {
+                    return action.product
+                }
+
+            })
+        }
+    },
+
 }
-     
-        
-    
-    export default createReducer(initialState, products)
+
+
+
+export default createReducer(initialState, products)
