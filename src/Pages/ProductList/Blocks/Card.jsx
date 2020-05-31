@@ -6,23 +6,30 @@ import { Link } from "react-router-dom";
 const { Meta } = CardComponent;
 
 export const Card = (props) => {
-  const { item, addProduct, deleteProduct } = props;
+  const { item, addProduct, deleteProduct, inBag } = props;
+  console.log(item)
+  
+ 
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
   };
-
+ 
   const [isAdd, changeAddToBag] = useState("В корзину");
   const addToBag = () => {
-    if (isAdd === "В корзину") {
+    if (isAdd === "В корзину" ) {
       addProduct(item);
 
       changeAddToBag("Удалить из корзины");
     } else {
+
       changeAddToBag("В корзину");
       deleteProduct(item);
     }
   };
+
+
+
   return (
     <div>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">

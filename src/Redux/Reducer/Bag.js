@@ -3,7 +3,8 @@ import { createReducer } from 'Helpers/reducer'
 
 const initialState = {
     bagsItem: [],
-    totalSum: 0
+    totalSum: 0,
+    inBag: false
 
 }
 
@@ -12,7 +13,8 @@ const bag = {
         return {
             ...state,
             bagsItem: [...state.bagsItem, action.product],
-            totalSum: state.totalSum + (action.product.count * action.product.price)
+            totalSum: state.totalSum + (action.product.count * action.product.price),
+            inBag: true
         }
     },
     [DELETE_PRODUCT]: (state = initialState, action) => {
@@ -22,7 +24,7 @@ const bag = {
             bagsItem: state.bagsItem.filter((i) => {
                 return i.id !== action.product.id
             }),
-
+            inBag: false
         }
 
 

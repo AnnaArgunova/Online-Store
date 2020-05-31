@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {ProductList } from './ProductList';
-import {ProductDetail} from './ProductDetalis';
-import {ProductBag} from './Bag';
+import React from 'react';
+import { ProductList } from './ProductList';
+import { ProductDetail } from './ProductDetalis';
+import { ProductBag } from './Bag';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,28 +11,17 @@ import {
 
 
 function App() {
-   const [addedProduct, addProduct] = useState(null)
-   const [deletedProduct, deleteProduct] = useState(null)
-
-   
   return (
-    
     <Router>
       <Switch>
         <Route path='/' exact>
-          <ProductList
-           addProduct ={addProduct} 
-           deleteProduct ={deleteProduct}
-          />
+          <ProductList />
         </Route>
-        <Route path = '/details'>
-          <ProductDetail/>
+        <Route path='/details'>
+          <ProductDetail />
         </Route>
-        <Route path = '/bag'>
-          <ProductBag 
-           addedProduct = {addedProduct}
-           deletedProduct ={deletedProduct}
-          />
+        <Route path='/bag'>
+          <ProductBag />
         </Route>
       </Switch>
     </Router>
