@@ -1,58 +1,10 @@
-import { ADD_PRODUCT, DELETE_PRODUCT } from '../Action/products';
+import { ADD_PRODUCT, DELETE_PRODUCT, GET_PRODUCT } from '../Action/products';
 import { createReducer } from 'Helpers/reducer';
 const initialState = {
-    catalog: [
-        {
-            id: 1,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/shrimpYellowNeon-300x400.jpg',
-            count: 0
-
-
-        },
-        {
-            id: 2,
-            title: 'Улитка',
-            price: 60,
-            image: 'images/snailYellowAmpoule1.jpg',
-            count: 0
-
-        },
-        {
-            id: 3,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/srimpGreenBabaulti-300x400.jpg',
-            count: 0
-
-        },
-        {
-            id: 4,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/shrimpYellowNeon-300x400.jpg',
-            count: 0
-
-        },
-        {
-            id: 5,
-            title: 'Улитка',
-            price: 60,
-            image: 'images/snailYellowAmpoule1.jpg',
-            count: 0
-
-        },
-        {
-            id: 6,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/srimpGreenBabaulti-300x400.jpg',
-            count: 0
-        }
-    ],
+    catalog: [],
     addedProduct: null,
-
+    error: null,
+    isLoader:false
 }
 
 const products = {
@@ -65,7 +17,8 @@ const products = {
                     return action.product
                 }
 
-            })
+            }),
+            inBag: action.product.inBag = true
 
         }
     },
@@ -78,9 +31,37 @@ const products = {
                     return action.product
                 }
 
-            })
+            }),
+            inBag: action.product.inBag = false
+
         }
     },
+   
+     [GET_PRODUCT.SUCCESS]: (state = initialState, { data }) => {
+        console.log('success');
+
+        return {
+            ...state,
+            data,
+            error: null
+        }
+    },
+    [GET_PRODUCT.FAILURE]: (state = initialState, { error }) => {
+        console.log('fail');
+
+        return {
+            ...state,
+            error
+        }
+    },
+    [GET_PRODUCT.REQUEST]: (state = initialState)=>{
+        console.log('request');
+
+return{
+    ...state,
+    isLoader:true
+}
+    }
 
 }
 

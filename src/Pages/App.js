@@ -1,16 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ProductList } from './ProductList';
 import {ProductDetail} from './ProductDetalis';
 import {ProductBag} from './Bag';
+import {getProduct} from 'Redux/Action/products'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 
 
-function App() {
+
+function App({catalog, getProduct}) {
+  
+  useEffect(()=>{
+    !catalog.length && getProduct()
+      }, [])
+
    const [addedProduct, addProduct] = useState(null)
    const [deletedProduct, deleteProduct] = useState(null)
 
@@ -39,4 +47,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+   inBag:state.bag.inBag,
+   catalog: state.products.catalog,
+   isLoader: state.products.isLoader
+  }
+ }
+
+const actions = {
+getProduct
+}
+
+export default connect(mapStateToProps, actions)(App)
