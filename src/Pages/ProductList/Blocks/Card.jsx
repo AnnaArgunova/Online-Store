@@ -31,14 +31,14 @@ export const Card = (props) => {
           style={{ width: 240 }}
           cover={
             <img
-              alt={item.title}
+              alt={item.name}
               src={item.image}
               style={{ minHeight: "320px" }}
             />
           }
           onClick={onChangeFlipped}
         >
-          <Meta title={item.title} />
+          <Meta title={item.name} />
         </CardComponent>
 
         <CardComponent
@@ -46,7 +46,7 @@ export const Card = (props) => {
           style={{ width: 240 }}
           cover={
             <img
-              alt={item.title}
+              alt={item.name}
               src={item.image}
               style={{ minHeight: "320px" }}
             />

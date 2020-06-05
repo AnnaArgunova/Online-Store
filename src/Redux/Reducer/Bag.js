@@ -31,6 +31,7 @@ const bag = {
     },
 
     [INCREMENT_PRODUCT]: (state = initialState, action) => {
+        console.log(action.product);
 
         return {
             ...state,
@@ -48,6 +49,8 @@ const bag = {
         return {
             ...state,
             bagsItem: state.bagsItem.map(el => {
+                console.log(el.id);
+
                 if (el.id === action.product.id && el.count) el.count -= 1
 
                 return el

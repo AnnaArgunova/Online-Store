@@ -37,17 +37,17 @@ const products = {
         }
     },
    
-     [GET_PRODUCT.SUCCESS]: (state = initialState, { data }) => {
-        console.log('success');
+     [GET_PRODUCT.SUCCESS]: (state = initialState, data) => {
+console.log(data);
 
         return {
             ...state,
-            data,
+        catalog:data.products,
             error: null
         }
     },
     [GET_PRODUCT.FAILURE]: (state = initialState, { error }) => {
-        console.log('fail');
+        console.log('error>>>>>');
 
         return {
             ...state,
@@ -63,7 +63,7 @@ return{
 }
     }
 
-}
+ }
 
 
 

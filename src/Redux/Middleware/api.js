@@ -9,16 +9,18 @@ export const ApiCall = ({
 }) => {
     const getMethod = method.toLowerCase();
     return new Promise((resolve, reject) => {
-        axios({ url:`${url}${endpoint}`, method: getMethod, catalog: body })
+        axios({
+                baseURL: `${url}${endpoint}`,
+                method: getMethod,
+                catalog: body
+            })
             .then(responce => resolve(responce))
-            .cath(err => reject(err))
+        // .cath(err => reject(err))
     })
 
 }
 
 export default state => next => action => {
-    console.log('next>>>', next);
-
     if (action.type !== 'API_REQUEST' || !action.apiData) return next(action)
     const {
         url,
@@ -35,25 +37,36 @@ export default state => next => action => {
 
     const onSuccess = (responce) => {
         console.log('Api success');
-        console.log("responce", responce)
+        console.log("responce", responce.data)
         const resp = responce.data
-        next({type: types.SUCCESS, ...resp})
+        next({
+            type: types.SUCCESS, ...resp
+        })
     }
 
     const onFailure = (err) => {
         console.log('Api error');
 
-            let errorType = ''
-            if(err.data && err.staus === 401 ){
-                errorType = 'Unauthorised'
-            }
-            next({type: types.FAILURE, errorType})
+        let errorType = ''
+        if (err.data && err.staus === 404) {
+            errorType = 'Unauthorised'
         }
+        next({
+            type: types.FAILURE,
+            errorType
+        })
+    }
 
 
 
-    ApiCall({url, endpoint, method, body, headers})
-    .then(onSuccess, onFailure)
-    .catch(err => console.log('err>>>>', err))
+    ApiCall({
+            url,
+            endpoint,
+            method,
+            body,
+            headers
+        })
+        .then(onSuccess, onFailure)
+        .catch(err => console.log('err>>>>', err))
 
 }

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {Bag} from './Bag';
+import {Bag} from './bag';
 import {incrementProductAction, decrementProductAction, deleteProductAction } from 'Redux/Action/products';
 
 const mapStateToProps = (state) => {
