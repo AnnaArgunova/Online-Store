@@ -4,7 +4,7 @@ import { createReducer } from 'Helpers/reducer'
 const initialState = {
     bagsItem: [],
     totalSum: 0,
-    
+   
 
 }
 
@@ -14,7 +14,7 @@ const bag = {
             ...state,
             bagsItem: [...state.bagsItem, action.product],
             totalSum: state.totalSum + (action.product.count * action.product.price),
-            
+
         }
     },
     [DELETE_PRODUCT]: (state = initialState, action) => {
@@ -31,8 +31,6 @@ const bag = {
     },
 
     [INCREMENT_PRODUCT]: (state = initialState, action) => {
-        console.log(action.product);
-
         return {
             ...state,
             bagsItem: state.bagsItem.map(el => {
@@ -45,11 +43,9 @@ const bag = {
         }
     },
     [DECREMENT_PRODUCT]: (state = initialState, action) => {
-
         return {
             ...state,
             bagsItem: state.bagsItem.map(el => {
-                console.log(el.id);
 
                 if (el.id === action.product.id && el.count) el.count -= 1
 

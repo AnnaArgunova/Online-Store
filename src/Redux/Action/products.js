@@ -22,7 +22,7 @@ export const incrementProductAction = (product) => ({
 export const DECREMENT_PRODUCT = 'DECREMENT_PRODUCT';
 export const decrementProductAction = (product) => ({
     type: DECREMENT_PRODUCT,
-    
+    product
 })
 
 

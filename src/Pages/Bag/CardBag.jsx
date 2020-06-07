@@ -22,7 +22,7 @@ export const CardBag = ({
   return (
     <Card>
       <CardTitle>
-        <h2>{item.title}</h2>
+        <h2>{item.name}</h2>
         <div>
           Количество<span> {item.count}</span>
         </div>

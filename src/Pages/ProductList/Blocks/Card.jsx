@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Card as CardComponent, Button } from "antd";
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const { Meta } = CardComponent;
 
 export const Card = (props) => {
-  const { item, addProduct, deleteProduct, inBag } = props;
+  const { item, addProduct, deleteProduct} = props;
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
@@ -14,7 +14,7 @@ export const Card = (props) => {
 
   const [isAdd, changeAddToBag] = useState("В корзину");
   const addToBag = () => {
-    if (isAdd === "В корзину" && !inBag) {
+    if (isAdd === "В корзину" ) {
       addProduct(item);
       changeAddToBag("Удалить из корзины");
     } else {
@@ -22,6 +22,8 @@ export const Card = (props) => {
       deleteProduct(item);
     }
   };
+
+
   
   return (
     <div>
@@ -62,6 +64,7 @@ export const Card = (props) => {
       <Button onClick={addToBag} type="link">
         {isAdd}
       </Button>
+    
     </div>
   );
 };

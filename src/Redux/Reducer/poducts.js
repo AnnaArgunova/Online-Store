@@ -18,7 +18,6 @@ const products = {
                 }
 
             }),
-            inBag: action.product.inBag = true
 
         }
     },
@@ -32,7 +31,6 @@ const products = {
                 }
 
             }),
-            inBag: action.product.inBag = false
 
         }
     },
