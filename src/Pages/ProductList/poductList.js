@@ -2,10 +2,11 @@ import React from 'react';
 import { Layout, Row } from 'antd';
 import { Card } from './Blocks';
 import { Menu } from './Blocks/Menu';
+import { useAuth0 } from "Pages/Blocks/Auth0";
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export const ProductListComponent = ({ catalog, inBag, addProduct, deleteProduct, ...rest }) => {
+export const ProductListComponent = ({ isAuth, catalog, inBag, addProduct, deleteProduct, ...rest }) => {
   console.log(rest);
 
 
@@ -17,13 +18,20 @@ export const ProductListComponent = ({ catalog, inBag, addProduct, deleteProduct
     key={element.id.toString()} />
 
   );
-
+  const { loginWithRedirect, logout } = useAuth0();
   return (
     <Layout>
       <Header>header</Header>
       <Layout>
         <Sider>
           <Menu />
+          <div>
+      {!isAuth && (
+        <button onClick={() => loginWithRedirect({})}>Log in</button>
+      )}
+
+      {isAuth && <button onClick={() => logout()}>Log out</button>}
+    </div>
         </Sider>
         <Content>
           <Row justify="space-around">

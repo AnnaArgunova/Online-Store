@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
     return {
      inBag:state.bag.inBag,
      catalog: state.products.catalog,
-     isLoader: state.products.isLoader
+     isLoader: state.products.isLoader,
+     isAuth:state.auth.isAuth
     }
    }
 
