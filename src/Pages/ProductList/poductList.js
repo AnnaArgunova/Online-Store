@@ -6,15 +6,13 @@ import { useAuth0 } from "Pages/Blocks/Auth0";
 
 const { Header, Sider, Content, Footer } = Layout;
 
-export const ProductListComponent = ({ isAuth, catalog, inBag, addProduct, deleteProduct, ...rest }) => {
-  console.log(rest);
-
+export const ProductListComponent = ({ isAuth, catalog,bag, addProduct, deleteProduct, ...rest }) => {
 
   const renderCards = (element) => (
     <Card item={element}
     addProduct={rest.addProductAction} 
     deleteProduct = {rest.deleteProductAction}
-    inBag = {inBag}
+    bag = {bag}
     key={element.id.toString()} />
 
   );

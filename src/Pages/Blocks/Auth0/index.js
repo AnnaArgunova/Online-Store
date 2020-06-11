@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
 import {connect} from 'react-redux';
-import {logInAction} from 'Redux/Action/auth0';
+import {logInAction, logOutAction} from 'Redux/Action/auth0';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -12,7 +12,8 @@ export const useAuth0 = () => useContext(Auth0Context);
 const Auth0ProviderComponent = ({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
-  login,
+  logIn,
+  logOut,
   ...initOptions
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState();
@@ -39,7 +40,9 @@ const Auth0ProviderComponent = ({
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
         setUser(user);
-        login(user);
+        logIn(user);
+      }else{
+        logOut(user)
       }
 
       setLoading(false);
@@ -92,7 +95,8 @@ const Auth0ProviderComponent = ({
 };
 
 const action ={
-  login: logInAction
+  logIn: logInAction,
+  logOut: logOutAction
 }
 
 export const Auth0Provider = connect(null, action)(Auth0ProviderComponent)

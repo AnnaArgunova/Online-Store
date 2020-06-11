@@ -4,7 +4,7 @@ import {addProductAction, deleteProductAction, getProduct} from 'Redux/Action/pr
 
 const mapStateToProps = (state) => {
     return {
-     inBag:state.bag.inBag,
+     bag:state.bag,
      catalog: state.products.catalog,
      isLoader: state.products.isLoader,
      isAuth:state.auth.isAuth

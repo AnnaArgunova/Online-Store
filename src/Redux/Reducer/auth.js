@@ -1,12 +1,13 @@
-import { LOG_IN} from '../Action/auth0';
+import { LOG_IN, LOG_OUT} from '../Action/auth0';
 import { createReducer } from 'Helpers/reducer';
 const initialState = {
-    user: null,
+    user: {},
     isAuth:false
 }
 
 const auth = {
     [LOG_IN]: (state = initialState, action) => {
+        
         return {
             ...state,
             isAuth:true,
@@ -14,7 +15,17 @@ const auth = {
 
         }
     },
- 
+
+    [LOG_OUT]: (state = initialState, action) => {
+        console.log('state.user>>>>>',state.user);
+        
+        return {
+            ...state,
+            isAuth:false,
+            user: {}
+
+        }
+    }
 
  }
 

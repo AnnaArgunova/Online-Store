@@ -61,6 +61,7 @@ export const Card = (props) => {
       <Link to="/details">
         <Button type="link">Подробнее</Button>
       </Link>
+
       <Button onClick={addToBag} type="link">
         {isAdd}
       </Button>
