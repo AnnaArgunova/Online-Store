@@ -1,61 +1,68 @@
-import { SELECT_PRODUCT } from '../Action/products'
-
+import { ADD_PRODUCT, DELETE_PRODUCT, GET_PRODUCT } from '../Action/products';
+import { createReducer } from 'Helpers/reducer';
 const initialState = {
-    catalog: [
-        {
-            id: 1,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/shrimpYellowNeon-300x400.jpg'
+    catalog: [],
+    addedProduct: null,
+    error: null,
+    isLoader:false
+}
 
-        },
-        {
-            id: 2,
-            title: 'Улитка',
-            price: 60,
-            image: 'images/snailYellowAmpoule1.jpg'
-        },
-        {
-            id: 3,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/srimpGreenBabaulti-300x400.jpg'
-        },
-        {
-            id: 4,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/shrimpYellowNeon-300x400.jpg'
+const products = {
+    [ADD_PRODUCT]: (state = initialState, action) => {
 
-        },
-        {
-            id: 5,
-            title: 'Улитка',
-            price: 60,
-            image: 'images/snailYellowAmpoule1.jpg'
-        },
-        {
-            id: 6,
-            title: 'Креветка',
-            price: 60,
-            image: 'images/srimpGreenBabaulti-300x400.jpg'
+        return {
+            ...state,
+            addedProduct: state.catalog.map(el => {
+                if (el.id === action.product.id) {
+                    return action.product
+                }
+
+            }),
+
         }
-    ],
-    selectedProduct: null
-}
+    },
+    [DELETE_PRODUCT]: (state = initialState, action) => {
 
-export const products = (state = initialState, action) => {
-    switch (action.type) {
-        case SELECT_PRODUCT: {
-            return {
-                ...state,
-                selectedProduct: action.product
-            }
-        }; 
-    
-        default: 
-            return state
-            
-        
-    }
+        return {
+            ...state,
+            addedProduct: state.catalog.map(el => {
+                if (el.id === action.product.id) {
+                    return action.product
+                }
+
+            }),
+
+        }
+    },
+   
+     [GET_PRODUCT.SUCCESS]: (state = initialState, data) => {
+console.log(data);
+
+        return {
+            ...state,
+        catalog:data.products,
+            error: null
+        }
+    },
+    [GET_PRODUCT.FAILURE]: (state = initialState, { error }) => {
+        console.log('error>>>>>');
+
+        return {
+            ...state,
+            error
+        }
+    },
+    [GET_PRODUCT.REQUEST]: (state = initialState)=>{
+        console.log('request');
+
+return{
+    ...state,
+    isLoader:true
 }
+    }
+
+ }
+
+
+
+export default createReducer(initialState, products)

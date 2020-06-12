@@ -1,8 +1,15 @@
-import {combineReducers} from 'redux'
-import {products} from './poducts'
+import { combineReducers } from 'redux'
+import products from './poducts';
+import bag from './Bag';
+import auth from './auth'
 
-const appReducer = combineReducers({
-    products
+const appRedux = combineReducers({
+    products,
+    bag,
+    auth
 })
 
-export {appReducer}
+const reducer = (state, action) =>{
+    return appRedux(state, action)
+}
+export default reducer 

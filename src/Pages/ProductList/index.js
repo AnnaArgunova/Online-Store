@@ -1,10 +1,20 @@
 import {connect} from 'react-redux';
 import {ProductListComponent} from './poductList';
-import {selectProductAction} from 'Redux/Action/products'
+import {addProductAction, deleteProductAction, getProduct} from 'Redux/Action/products';
+
+const mapStateToProps = (state) => {
+    return {
+     bag:state.bag,
+     catalog: state.products.catalog,
+     isLoader: state.products.isLoader,
+     isAuth:state.auth.isAuth
+    }
+   }
 
 const actions = {
-  selectProductAction
-
+addProductAction,
+deleteProductAction,
+getProduct,
 }
 
-export const ProductList= connect(null, actions)(ProductListComponent)
+export const ProductList= connect(mapStateToProps, actions)(ProductListComponent)

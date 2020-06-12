@@ -5,32 +5,26 @@ import { Link } from "react-router-dom";
 
 const { Meta } = CardComponent;
 
-
 export const Card = (props) => {
-  const {item, bags, selectProduct} = props
+  const { item, addProduct, deleteProduct} = props;
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
-    selectProduct(item);
   };
 
-const [isAdd, changeAddToBag] = useState('В корзину');
+  const [isAdd, changeAddToBag] = useState("В корзину");
   const addToBag = () => {
-    if(isAdd === 'В корзину'){
-      bags.push(item);
-
-    changeAddToBag('Удалить из корзины')
-    } else{
-      changeAddToBag('В корзину')
-for(let i = 0; i < bags.length; i++){
-  if(bags[i].id === item.id){
-    bags.splice(i, 1)
-  }
-}
-  }
-
-   console.log(bags);
+    if (isAdd === "В корзину" ) {
+      addProduct(item);
+      changeAddToBag("Удалить из корзины");
+    } else {
+      changeAddToBag("В корзину");
+      deleteProduct(item);
+    }
   };
+
+
+  
   return (
     <div>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
@@ -39,14 +33,14 @@ for(let i = 0; i < bags.length; i++){
           style={{ width: 240 }}
           cover={
             <img
-              alt={item.title}
+              alt={item.name}
               src={item.image}
               style={{ minHeight: "320px" }}
             />
           }
           onClick={onChangeFlipped}
         >
-          <Meta title={item.title} />
+          <Meta title={item.name} />
         </CardComponent>
 
         <CardComponent
@@ -54,7 +48,7 @@ for(let i = 0; i < bags.length; i++){
           style={{ width: 240 }}
           cover={
             <img
-              alt={item.title}
+              alt={item.name}
               src={item.image}
               style={{ minHeight: "320px" }}
             />
@@ -67,10 +61,11 @@ for(let i = 0; i < bags.length; i++){
       <Link to="/details">
         <Button type="link">Подробнее</Button>
       </Link>
+
       <Button onClick={addToBag} type="link">
         {isAdd}
       </Button>
-      
+    
     </div>
   );
 };

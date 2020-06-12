@@ -1,46 +1,42 @@
-import React, { useState } from "react";
-import {Button} from 'antd';
-import {Card, CardTitle, CardButton} from './styles';
-import catalog from '../../catalog';
+import React from "react";
+import { Button } from "antd";
+import { Card, CardTitle, CardButton } from "./styles";
 
-
-catalog.totalSum = 0;
-
-
-export const CardBag = ({ item }) => {
-  const [count, setCount] = useState(0);
+export const CardBag = ({
+  item,
+  incrementProduct,
+  decrementProduct,
+  deleteProduct,
+}) => {
   const addCount = () => {
-      setCount(count+1);
-      
-catalog.totalSum += item.price;
-console.log(catalog, count);
+    incrementProduct(item);
+  };
 
-}
-      
-  const deleteCount = () =>{
-    if(count >0){
-    setCount(count-1);
-    item.totalCont = count-1;
-    catalog.totalSum -= item.price;
+  const deleteCount = () => {
+    decrementProduct(item);
+  };
 
-    console.log(catalog);
-    }
-}
+  const delProduct = () => {
+    deleteProduct(item);
+  };
   return (
-      
     <Card>
-        <CardTitle>
-      <h2>{item.title}</h2>
-      <div>
-        Количество<span> {count}</span>
-      </div>
+      <CardTitle>
+        <h2>{item.name}</h2>
+        <div>
+          Количество<span> {item.count}</span>
+        </div>
       </CardTitle>
       <CardButton>
-  <div>Сумма<span> {count * item.price} грн</span></div>
-      <Button style = {{margin:'10px 2px'}} onClick={addCount}>+1 шт</Button>
-      <Button onClick={deleteCount}>-1 шт</Button>
+        <div>
+          Сумма<span> {item.count * item.price} грн</span>
+        </div>
+        <Button style={{ margin: "10px 2px" }} onClick={addCount}>
+          +1 шт
+        </Button>
+        <Button onClick={deleteCount}>-1 шт</Button>
       </CardButton>
-      <div>Итого:<span> {catalog.totalSum} грн</span></div>
+      <Button onClick={delProduct}>DElETE</Button>
     </Card>
   );
 };
