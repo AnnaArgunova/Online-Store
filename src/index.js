@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'antd/dist/antd.css';
-import App from './Pages/App';
+import App from './Pages/index';
 import { storeCreator } from './Redux/index';
 import { Provider } from 'react-redux';
 import {config} from 'Constants/auth0';
