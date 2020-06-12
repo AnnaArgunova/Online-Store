@@ -1,5 +1,6 @@
 import React from "react";
 import { CardBag } from "../Bag/CardBag";
+import {TotalSum } from "./styles";
 
 export const Bag = ({
   item,
@@ -27,9 +28,9 @@ export const Bag = ({
       ) : (
         <h2>Корзина пуста</h2>
       )}
-      <div>
-        Сумма<span> {totalSum}</span>
-      </div>
+      <TotalSum>
+        Сумма:<span> {totalSum} грн</span>
+      </TotalSum>
     </div>
   );
 };
