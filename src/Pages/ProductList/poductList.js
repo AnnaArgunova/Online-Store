@@ -18,29 +18,11 @@ export const ProductListComponent = ({ isAuth, catalog,bag, addProduct, deletePr
   );
   const { loginWithRedirect, logout } = useAuth0();
   return (
-    <Layout>
-      <Header>header</Header>
-      <Layout>
-        <Sider>
-          <Menu />
-          <div>
-      {!isAuth && (
-        <button onClick={() => loginWithRedirect({})}>Log in</button>
-      )}
 
-      {isAuth && <button onClick={() => logout()}>Log out</button>}
-    </div>
-        </Sider>
-        <Content>
           <Row justify="space-around">
 
             {catalog.map(item => (renderCards(item)))}
           </Row>
-        </Content>
-        <Sider>right sidebar</Sider>
-      </Layout>
-      <Footer>footer</Footer>
-    </Layout>
-
+  
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { CardBag } from "../Bag/CardBag";
-import {TotalSum } from "./styles";
+import {TotalSum } from "Styles/Bag";
 
 export const Bag = ({
   item,

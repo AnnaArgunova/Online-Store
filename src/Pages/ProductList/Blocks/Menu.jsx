@@ -6,6 +6,8 @@ export const Menu =({bags}) =>{
     
     return(
         <div>
+         
+            <Link to = '/'><div>Каталог</div></Link>
             <Link to={{
             pathname: "/bag",
             propsSearch: bags

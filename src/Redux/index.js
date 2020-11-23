@@ -9,9 +9,7 @@ const persistConfig = {
     key: 'root',
     storage,
      whitelist: ['auth'],
-    //  whitelist:['bag']
-
-  }
+     }
   
 
   const persistedReducer = persistReducer(persistConfig, reducer)

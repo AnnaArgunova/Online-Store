@@ -10,10 +10,12 @@ const initialState = {
 
 const bag = {
     [ADD_PRODUCT]: (state = initialState, action) => {
+        console.log('st>>>>>', state.bagsItem);
+
         return {
             ...state,
-            bagsItem: [...state.bagsItem, action.product],
-            totalSum: state.totalSum + (action.product.count * action.product.price),
+            bagsItem:  [...state.bagsItem, action.product],
+              totalSum: state.totalSum + (action.product.count * action.product.price),
 
         }
     },

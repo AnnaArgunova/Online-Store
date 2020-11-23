@@ -1,6 +1,6 @@
 import React from "react";
 //import { Button } from "antd";
-import {H2, ButtonDel,Button, Card, CardTitle, CardButton, CardImg } from "./styles";
+import {H2, ButtonDel,Button, Card, CardTitle, CardButton, CardImg } from "Styles/Bag";
 
 export const CardBag = ({
   item,
