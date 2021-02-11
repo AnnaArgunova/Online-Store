@@ -8,32 +8,32 @@ const initialState = {
 }
 
 const products = {
-    [ADD_PRODUCT]: (state = initialState, action) => {
+    // [ADD_PRODUCT]: (state = initialState, action) => {
 
-        return {
-            ...state,
-            addedProduct: state.catalog.map(el => {
-                if (el.id === action.product.id) {
-                    return action.product
-                }
+    //     return {
+    //         ...state,
+    //         addedProduct: state.catalog.map(el => {
+    //             if (el.id === action.product.id) {
+    //                 return action.product
+    //             }
 
-            }),
+    //         }),
 
-        }
-    },
-    [DELETE_PRODUCT]: (state = initialState, action) => {
+    //     }
+    // },
+    // [DELETE_PRODUCT]: (state = initialState, action) => {
 
-        return {
-            ...state,
-            addedProduct: state.catalog.map(el => {
-                if (el.id === action.product.id) {
-                    return action.product
-                }
+    //     return {
+    //         ...state,
+    //         addedProduct: state.catalog.map(el => {
+    //             if (el.id === action.product.id) {
+    //                 return action.product
+    //             }
 
-            }),
+    //         }),
 
-        }
-    },
+    //     }
+    // },
    
      [GET_PRODUCT.SUCCESS]: (state = initialState, data) => {
 console.log(data);

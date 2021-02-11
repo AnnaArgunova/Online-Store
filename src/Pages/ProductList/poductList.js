@@ -4,7 +4,7 @@ import { Card } from './Blocks';
 import { Menu } from './Blocks/Menu';
 import { useAuth0 } from "Pages/Blocks/Auth0";
 
-const { Header, Sider, Content, Footer } = Layout;
+
 
 export const ProductListComponent = ({ isAuth, catalog,bag, addProduct, deleteProduct, ...rest }) => {
 

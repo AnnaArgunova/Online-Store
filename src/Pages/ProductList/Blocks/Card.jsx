@@ -6,18 +6,38 @@ import { Link } from "react-router-dom";
 const { Meta } = CardComponent;
 
 export const Card = (props) => {
-  const { item, addProduct, deleteProduct} = props;
+  const { item, addProduct, deleteProduct,bag} = props;
   const [isFlipped, changeFlopped] = useState(false);
   const onChangeFlipped = () => {
     changeFlopped(!isFlipped);
   };
 
-  const [isAdd, changeAddToBag] = useState("В корзину");
+  let isBagsItem = false
+ 
+   bag.bagsItem.map(el=>{
+     console.log(el);
+if(el.id === item.id){
+  isBagsItem = true
+} else{
+  isBagsItem = false
+}
+  })
+  
+
+ 
+ let name = isBagsItem? "Удалить из корзины": "В корзину"
+
+
+
+  const [isAdd, changeAddToBag] = useState(name);
   const addToBag = () => {
     if (isAdd === "В корзину" ) {
       addProduct(item);
       changeAddToBag("Удалить из корзины");
-    } else {
+    } else if(!isBagsItem) {
+      changeAddToBag("Удалить из корзины");
+    }
+    else if(isBagsItem){
       changeAddToBag("В корзину");
       deleteProduct(item);
     }

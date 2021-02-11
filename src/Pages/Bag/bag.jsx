@@ -1,5 +1,5 @@
 import React from "react";
-import { CardBag } from "../Bag/CardBag";
+import { CardBag } from "./CardBag";
 import {TotalSum } from "Styles/Bag";
 
 export const Bag = ({
